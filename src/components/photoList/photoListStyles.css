@@ -1,0 +1,14 @@
+.photoGrid{
+    display:grid;
+    grid-template-columns: 24% 24% 24% 24%;
+    grid-row-gap: 1rem;
+    grid-column-gap:calc(4%/3);
+    max-width: 100%;
+}
+@media (max-width:1000px){
+    .photoGrid{
+        display:flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+}

@@ -1,0 +1,9 @@
+.primaryNav{
+    margin-bottom: 2rem;
+    background-color:#C9C9C9;
+}
+.navRow{
+    display:flex;
+    justify-content: space-between;
+    display:row;
+}

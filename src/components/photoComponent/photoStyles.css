@@ -1,0 +1,10 @@
+.photoCard{
+    position: relative;
+}
+.photoCard .deleteIcon{
+position: absolute;
+right:0; 
+bottom:0;
+margin:1rem;
+cursor:pointer;
+}

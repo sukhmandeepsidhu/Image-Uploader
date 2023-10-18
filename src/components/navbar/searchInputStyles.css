@@ -1,0 +1,9 @@
+.searchBox{
+    display:flex;
+}
+.searchBox Button{
+    margin:0 0.5rem;
+    border: 1.5px solid lightgray;
+    color:gray;
+    width: 5rem;
+}

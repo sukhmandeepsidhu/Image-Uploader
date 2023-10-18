@@ -1,0 +1,8 @@
+.uploadIcon{
+    cursor: pointer;
+}
+.warningText{
+    color:gray;
+    font-size: x-small;
+    text-align: right;
+}
