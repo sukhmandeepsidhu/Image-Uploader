@@ -1,70 +1,42 @@
-# Getting Started with Create React App
+# Image Uploader
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### How to use?
 
-## Available Scripts
+    npm install
+    npm run dev
 
-In the project directory, you can run:
+### Goals
 
-### `npm start`
+- My main goal was to ensure the end product met the mockup provided
+  - Be able to upload images and ensure they are saved using the API
+  - Be able to search images by name using input and API (Search by calling the API, no client side filtering)
+  - List all uploaded images
+  - Delete images (By calling API no client side filters)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Features
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+This is a SPA that allows user to view, upload, search and delete images
 
-### `npm test`
+User is able to:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- View all the uploaded images
+- See the total count of images/searched results
+- Upload an image
+- Search an image by name
+- Delete an image
 
-### `npm run build`
+## Notes
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Not having much experience with Node, my main hurdle was the mock api. I understand I could've used something like JSONplaceHolder but I saw this as an opportunity to learn something new in a timebox and build something that could work with the frontend I had planned. I initially thought of studying up on Node and building an entirely different backend but then due to time constraints decided to go with json-server.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+I love working with React and CSS libraries so that part only took me about 2-3hr including trying out various design libraries etc and had a lot of fun with it
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Building the mock api took majority of my time. A good amount of reading and trial and error but overall it was a good learning experience
 
-### `npm run eject`
+## Future
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+I could see that this project could be grown into something quite big, if I had more time I would definitely focus on the following:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Pagination (when it comes to scaling this project, I believe that'd be one of the first steps)
+- Testing
+- Polishing up the backend (I don't have much experience building API's so I believe I could definitely learn better practices and produce something more refined)
