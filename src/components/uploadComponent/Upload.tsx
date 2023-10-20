@@ -5,13 +5,13 @@ import { Modal, Button } from 'react-bootstrap';
 import { MDBFile } from 'mdb-react-ui-kit';
 import { useState } from 'react';
 
-interface ModalComponetProps{
+interface ModalComponentProps{
   show: boolean;
   onClose: () => void; 
   onSubmit: (file: File) => void;
 }
 
-const ModalComponent = ({ show, onClose, onSubmit }: ModalComponetProps) => {
+const ModalComponent = ({ show, onClose, onSubmit }: ModalComponentProps) => {
   const [selectedFile, setSelectedFile] = useState<File|null>(null);
   const handleFileChange = (event:ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];

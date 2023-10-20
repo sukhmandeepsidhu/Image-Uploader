@@ -9,9 +9,8 @@ interface SearchInputProps{
   placeholder: string;
 }
 
-const SearchInput = (props:SearchInputProps) => {
+const SearchInput = ({ onSubmit, placeholder }:SearchInputProps) => {
   const [searchText, setSearchText] = useState<string>('');
-  const { onSubmit, placeholder } = props;
   
   const handleChange = (e:ChangeEvent<HTMLInputElement>) => {
     setSearchText(e.target.value);

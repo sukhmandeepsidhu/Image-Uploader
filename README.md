@@ -12,6 +12,7 @@
   - Be able to search images by name using input and API (Search by calling the API, no client side filtering)
   - List all uploaded images
   - Delete images (By calling API no client side filters)
+  - Resolve any errors cause by 'noImplicitAny'
 
 ### Features
 
