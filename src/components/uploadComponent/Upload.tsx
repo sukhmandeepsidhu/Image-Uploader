@@ -1,17 +1,26 @@
+import React,{ChangeEvent} from 'react';
+import './uploadStyles.css';
 import { HiUpload } from 'react-icons/hi';
 import { Modal, Button } from 'react-bootstrap';
 import { MDBFile } from 'mdb-react-ui-kit';
 import { useState } from 'react';
-import './uploadStyles.css';
 
-const ModalComponent = ({ show, onClose, onSubmit }) => {
-  const [selectedFile, setSelectedFile] = useState(null);
-  const handleFileChange = (event) => {
-    const file = event.target.files[0];
-    setSelectedFile(file);
+interface ModalComponetProps{
+  show: boolean;
+  onClose: () => void; 
+  onSubmit: (file: File) => void;
+}
+
+const ModalComponent = ({ show, onClose, onSubmit }: ModalComponetProps) => {
+  const [selectedFile, setSelectedFile] = useState<File|null>(null);
+  const handleFileChange = (event:ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (file) {
+      setSelectedFile(file); 
+    }
   };
   const handleUpload = () => {
-    onSubmit(selectedFile);
+    onSubmit(selectedFile!);
     onClose();
   };
   return (
@@ -20,7 +29,7 @@ const ModalComponent = ({ show, onClose, onSubmit }) => {
         <Modal.Title>Upload Image</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <MDBFile type='file' accept='image/jpeg' onChange={handleFileChange} />
+        <MDBFile accept='image/jpeg' onChange={handleFileChange} />
         <div className='warningText'>NOTE: File must be JPEG</div>
       </Modal.Body>
       <Modal.Footer>
@@ -35,16 +44,20 @@ const ModalComponent = ({ show, onClose, onSubmit }) => {
   );
 };
 
-const Upload = ({ onClick }) => {
-  const [showModal, setShowModal] = useState(false);
+interface UploadProps{
+  onClick: (file:File) => Promise<void>;
+}
+
+const Upload = ({ onClick }: UploadProps) => {
+  const [showModal, setShowModal] = useState<boolean>(false);
+
   const closeModal = () => {
     setShowModal(false);
   };
   const openModal = () => {
     setShowModal(true);
   };
-
-  const handleSubmit = (file) => {
+  const handleSubmit = (file:File) => {
     onClick(file);
   };
 

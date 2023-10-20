@@ -1,5 +1,6 @@
-import { useState, useEffect, createContext } from 'react';
+import React,{ReactElement} from 'react';
 import axios from 'axios';
+import { useState, useEffect, createContext } from 'react';
 
 const BASE_URL = 'http://localhost:5001';
 const GET_URL = `${BASE_URL}/images`;
@@ -7,9 +8,24 @@ const POST_URL = `${BASE_URL}/upload`;
 const DELETE_URL = `${BASE_URL}/delete`;
 const SEARCH_URL = `${BASE_URL}/image`;
 
-const PhotosContext = createContext();
+export interface PhotoType{
+    filename: string;             // Name of the file
+    size: number;                 // File size in bytes
+    dateUploaded: string;           // Date of upload
+    content: string;              // Base64-encoded image content
+}
 
-const loadImages = async () => {
+interface PhotosContextType{
+  loadedPhotos: PhotoType[];
+  handleUpload: (file: File) => Promise<void>;
+  handleDelete: (deleteItemDateUpload: string) => Promise<void>;
+  handleSearch: (filename: string) => Promise<void>;
+  loading: boolean;
+}
+  
+const PhotosContext = createContext<PhotosContextType | null>(null);
+
+const loadImages = async ()=> {
   try {
     const { data } = await axios.get(GET_URL);
     return data;
@@ -18,7 +34,7 @@ const loadImages = async () => {
   }
 };
 
-const imageUpload = async (file) => {
+const imageUpload = async (file:File) => {
   const formData = new FormData();
   formData.append('image', file);
   try {
@@ -34,7 +50,7 @@ const imageUpload = async (file) => {
   }
 };
 
-const deleteImage = async (deleteItemDateUpload) => {
+const deleteImage = async (deleteItemDateUpload:string) => {
   try {
     const response = await axios.delete(
       `${DELETE_URL}/${deleteItemDateUpload}`
@@ -46,7 +62,7 @@ const deleteImage = async (deleteItemDateUpload) => {
   }
 };
 
-const searchImage = async (filename) => {
+const searchImage = async (filename:string) => {
   try {
     const { data } = await axios.get(`${SEARCH_URL}/${filename}`);
     return data;
@@ -55,9 +71,13 @@ const searchImage = async (filename) => {
   }
 };
 
-export const PhotosContextProvider = ({ children }) => {
-  const [loadedPhotos, setLoadedPhotos] = useState([]);
-  const [loading, setLoading] = useState(false);
+interface PhotosContextProviderProps{
+  children: ReactElement;
+}
+export const PhotosContextProvider = (props:PhotosContextProviderProps) => {
+  const { children } = props;
+  const [loadedPhotos, setLoadedPhotos] = useState<PhotoType[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
 
   const loadNewPhotos = async () => {
     loadImages().then((loadedImages) => {
@@ -71,19 +91,19 @@ export const PhotosContextProvider = ({ children }) => {
     loadNewPhotos();
   }, []);
 
-  const handleDelete = async (deleteItemDateUpload) => {
+  const handleDelete = async (deleteItemDateUpload:string) => {
     setLoading(true);
     await deleteImage(deleteItemDateUpload);
     loadNewPhotos();
   };
 
-  const handleUpload = async (file) => {
+  const handleUpload = async (file:File) => {
     setLoading(true);
     await imageUpload(file);
     loadNewPhotos();
   };
 
-  const handleSearch = async (filename) => {
+  const handleSearch = async (filename:string) => {
     setLoading(true);
 
     if (filename) {

@@ -1,11 +1,19 @@
+import React,{ChangeEvent} from 'react';
+import './searchInputStyles.css';
 import { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
-import './searchInputStyles.css';
 import { AiOutlineReload } from 'react-icons/ai';
 
-const SearchInput = ({ onSubmit, placeholder }) => {
-  const [searchText, setSearchText] = useState('');
-  const handleChange = (e) => {
+interface SearchInputProps{
+  onSubmit: (searchText:string) => Promise<void>;
+  placeholder: string;
+}
+
+const SearchInput = (props:SearchInputProps) => {
+  const [searchText, setSearchText] = useState<string>('');
+  const { onSubmit, placeholder } = props;
+  
+  const handleChange = (e:ChangeEvent<HTMLInputElement>) => {
     setSearchText(e.target.value);
   };
   const handleSubmit = () => {

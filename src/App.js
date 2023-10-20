@@ -1,3 +1,4 @@
+import React from 'react';
 import ImageUploader from './pages/ImageUploader';
 import { PhotosContextProvider } from './contexts/PhotosContext';
 

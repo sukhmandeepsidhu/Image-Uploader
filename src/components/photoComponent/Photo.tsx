@@ -1,9 +1,17 @@
+import React from 'react';
+import './photoStyles.css';
 import { Card } from 'react-bootstrap';
 import { HiTrash } from 'react-icons/hi';
-import './photoStyles.css';
+import { PhotoType } from '../../contexts/PhotosContext';
 
-const Photo = ({ photo, onDelete }) => {
+interface PhotoProps{
+  onDelete: (dateUploaded: string) => Promise<void>;
+  photo: PhotoType;
+}
+
+const Photo = ({ photo, onDelete }:PhotoProps) => {
   const { content, filename, dateUploaded } = photo;
+
   const handleDelete = () => {
     onDelete(dateUploaded);
   };

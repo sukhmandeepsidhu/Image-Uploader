@@ -1,16 +1,16 @@
-import { Container, Spinner } from 'react-bootstrap';
-import { useContext } from 'react';
-import { SEARCH_PLACEHOLDER } from '../constants';
+import React from 'react';
 import Upload from '../components/uploadComponent/Upload';
 import NavBar from '../components/navbar/NavBar';
 import PhotoList from '../components/photoList/PhotoList';
 import SearchInput from '../components/navbar/SearchInput';
-import PhotosContext from '../contexts/PhotosContext';
 import './imageUploaderSyles.css';
+import { Container, Spinner } from 'react-bootstrap';
+import { SEARCH_PLACEHOLDER } from '../constants';
+import { usePhotosContext } from '../hooks/usePhotoContext';
 
 const ImageUploader = () => {
   const { handleUpload, handleSearch, loading, loadedPhotos } =
-    useContext(PhotosContext);
+    usePhotosContext();
 
   return (
     <div>

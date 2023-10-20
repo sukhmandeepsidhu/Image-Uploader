@@ -1,7 +1,13 @@
-import { Container, Navbar, Nav } from 'react-bootstrap';
+import React, { ReactNode } from 'react';
 import './navBarStyles.css';
+import { Container, Navbar, Nav } from 'react-bootstrap';
 
-const NavBar = ({ left, right }) => {
+interface NavBarProps {
+  left: ReactNode;  
+  right: ReactNode; 
+}
+
+const NavBar = ({left,right}: NavBarProps) => {
   return (
     <Navbar data-bs-theme='light' sticky='top' className='primaryNav'>
       <Container>

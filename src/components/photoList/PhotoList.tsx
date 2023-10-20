@@ -1,10 +1,11 @@
+import React from 'react';
 import Photo from '../photoComponent/Photo';
-import PhotosContext from '../../contexts/PhotosContext';
-import { useContext } from 'react';
 import './photoListStyles.css';
+import { usePhotosContext } from '../../hooks/usePhotoContext';
+
 
 const PhotoList = () => {
-  const { handleDelete, loadedPhotos } = useContext(PhotosContext);
+  const { handleDelete, loadedPhotos } = usePhotosContext();
 
   return (
     <div className='photoGrid'>
